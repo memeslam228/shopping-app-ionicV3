@@ -19,6 +19,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {FIREBASE_CONFIG} from "./firebase.credentials";
 import {AuthProvider} from '../providers/auth/auth';
 import {NgxErrorsModule} from "@ultimate/ngxerrors";
+import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import {NgxErrorsModule} from "@ultimate/ngxerrors";
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AuthProvider,
-        AngularFireAuth
+        AngularFireAuth,
+        FireDatabaseProvider
     ]
 })
 export class AppModule {

@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {PopoverController} from "ionic-angular";
 import {PopoverUserComponent} from "../../components/popover-user/popover-user";
+// @ts-ignore
+import {Item} from "../../providers/fire-crud/item";
+import {FireDatabaseProvider} from "../../providers/fire-crud/fire-database";
+import {map} from "rxjs/operators";
 
 /**
  * Generated class for the ProductPage page.
@@ -14,15 +18,25 @@ import {PopoverUserComponent} from "../../components/popover-user/popover-user";
     templateUrl: 'product.html',
 })
 export class ProductPage {
+    items: Item[];
 
-    constructor(public popover: PopoverController) {
+    constructor(public popover: PopoverController, public db: FireDatabaseProvider) {
+    }
+
+    getItemsList() {
+        // Use snapshotChanges().map() to store the key
+        this.db.getItemsList().valueChanges().subscribe(item => console.log(item))
     }
 
     presentPopover(event) {
         const popover = this.popover.create(PopoverUserComponent);
         popover.present({
-            ev : event
+            ev: event
         });
+    }
+
+    ionViewDidLoad() {
+        this.getItemsList();
     }
 
 }
