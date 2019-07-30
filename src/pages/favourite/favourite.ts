@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {PopoverController} from 'ionic-angular';
+import {PopoverUserComponent} from "../../components/popover-user/popover-user";
 
 /**
  * Generated class for the FavouritePage page.
@@ -9,12 +10,19 @@ import {NavController, NavParams} from 'ionic-angular';
  */
 
 @Component({
-  selector: 'page-favourite',
-  templateUrl: 'favourite.html',
+    selector: 'page-favourite',
+    templateUrl: 'favourite.html',
 })
 export class FavouritePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    constructor(public popover: PopoverController) {
+    }
+
+    presentPopover(event) {
+        const popover = this.popover.create(PopoverUserComponent);
+        popover.present({
+            ev: event
+        });
+    }
 
 }
