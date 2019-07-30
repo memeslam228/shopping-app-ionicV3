@@ -15,5 +15,17 @@
 </ion-header>
 
 <ion-content padding>
-
+    <div *ngFor="let item of items">
+        <div>
+            <p>
+                {{ item.name }}
+            </p>
+            <p>
+                {{ item.key }}
+            </p>
+            <p>
+                {{ item.price }}
+            </p>
+        </div>
+    </div>
 </ion-content>

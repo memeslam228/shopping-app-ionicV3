@@ -25,7 +25,13 @@ export class ProductPage {
 
     getItemsList() {
         // Use snapshotChanges().map() to store the key
-        this.db.getItemsList().valueChanges().subscribe(item => console.log(item))
+        this.db.getItemsList().snapshotChanges().pipe(
+            map(changes =>
+                changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
+            )
+        ).subscribe(items => {
+            this.items = items;
+        });
     }
 
     presentPopover(event) {

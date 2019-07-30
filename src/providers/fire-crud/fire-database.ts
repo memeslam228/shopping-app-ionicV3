@@ -12,8 +12,6 @@ export class FireDatabaseProvider {
 
     constructor(private db: AngularFireDatabase) {
         this.itemsRef = db.list(this.dbPath);
-
-        this.itemsRef.valueChanges().subscribe(x => console.log(x));
     }
 
     getItemsList(): AngularFireList<Item> {
