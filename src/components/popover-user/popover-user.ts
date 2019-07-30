@@ -20,6 +20,7 @@ export class PopoverUserComponent {
 
 
     onLogOut() {
+        this.auth.logOut();
         this.view.dismiss();
         this.app.getRootNav().setRoot(SignInPage);
     }

@@ -1,23 +1,44 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {Component} from '@angular/core';
+import {Platform} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {SignInPage} from "../pages/sign-in/sign-in";
+import {AuthProvider} from "../providers/auth/auth";
+import {TabsPage} from "../pages/tabs/tabs";
 
 
 @Component({
-  templateUrl: 'app.html'
+    templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = SignInPage;
+    rootPage: any = SignInPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-    });
-  }
+    constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: AuthProvider) {
+        platform.ready().then(() => {
+            this.initializeApp();
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            statusBar.styleDefault();
+            splashScreen.hide();
+        });
+    }
+
+    initializeApp() {
+        this.auth.afAuth.authState
+            .subscribe(
+                user => {
+                    if (user) {
+                        this.rootPage = TabsPage;
+                    } else {
+                        this.rootPage = SignInPage;
+                    }
+                },
+                () => {
+                    this.rootPage = SignInPage;
+                }
+            );
+
+
+    }
 }
