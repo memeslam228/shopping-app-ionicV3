@@ -37,7 +37,9 @@ export class SignInPage {
         };
         this.auth.signInWithEmail(credentials)
             .then(
-                () => this.navCtrl.setRoot(TabsPage),
+                () => {
+                    this.navCtrl.setRoot(TabsPage);
+                    },
                 error => this.loginError = error.message
             );
     }

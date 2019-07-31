@@ -2,6 +2,8 @@ import {NgModule, ErrorHandler} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {TabsPage} from '../pages/tabs/tabs';
 import {ProductPage} from "../pages/product/product";
@@ -9,10 +11,8 @@ import {FavouritePage} from "../pages/favourite/favourite";
 import {SignInPage} from "../pages/sign-in/sign-in";
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {CartPage} from "../pages/cart/cart";
+import {HeaderMenuComponent} from "../components/header-menu/header-menu";
 
-import {StatusBar} from '@ionic-native/status-bar';
-import {SplashScreen} from '@ionic-native/splash-screen';
-import {PopoverUserComponent} from "../components/popover-user/popover-user";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
@@ -27,10 +27,10 @@ import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
         ProductPage,
         FavouritePage,
         CartPage,
-        PopoverUserComponent,
         SignInPage,
         SignUpPage,
-        TabsPage
+        TabsPage,
+        HeaderMenuComponent
     ],
     imports: [
         BrowserModule,
@@ -46,10 +46,10 @@ import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
         ProductPage,
         FavouritePage,
         CartPage,
-        PopoverUserComponent,
         SignInPage,
         SignUpPage,
-        TabsPage
+        TabsPage,
+        HeaderMenuComponent
     ],
     providers: [
         StatusBar,
