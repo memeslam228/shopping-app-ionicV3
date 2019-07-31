@@ -23,6 +23,7 @@ import {AuthProvider} from '../providers/auth/auth';
 import {NgxErrorsModule} from "@ultimate/ngxerrors";
 import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
 import {ItemDetailsPage} from "../pages/item-details/item-details";
+import {FavouriteProvider} from '../providers/favourite/favourite';
 
 @NgModule({
     declarations: [
@@ -64,7 +65,8 @@ import {ItemDetailsPage} from "../pages/item-details/item-details";
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AuthProvider,
         AngularFireAuth,
-        FireDatabaseProvider
+        FireDatabaseProvider,
+        FavouriteProvider
     ]
 })
 export class AppModule {

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavParams} from 'ionic-angular';
 
 import {Item} from "../../providers/fire-crud/item";
+import {FavouriteProvider} from "../../providers/favourite/favourite";
 
 @Component({
     selector: 'page-item-details',
@@ -10,7 +11,7 @@ import {Item} from "../../providers/fire-crud/item";
 export class ItemDetailsPage {
     item: Item;
 
-    constructor(public navParams: NavParams) {
+    constructor(public navParams: NavParams, private favourite: FavouriteProvider) {
         this.item = navParams.get('item');
     }
 
@@ -19,7 +20,7 @@ export class ItemDetailsPage {
     }
 
     addToFavourite() {
-
+        this.favourite.addToFavourite(this.item);
     }
 
 }

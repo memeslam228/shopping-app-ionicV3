@@ -12,5 +12,7 @@
 </ion-header>
 
 <ion-content padding>
-
+    <div *ngFor="let item of items">
+        <p padding-top>{{ item.name }}</p>
+    </div>
 </ion-content>
