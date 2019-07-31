@@ -3,6 +3,7 @@ import {map} from "rxjs/operators";
 // @ts-ignore
 import {Item} from "../../providers/fire-crud/item";
 import {FireDatabaseProvider} from "../../providers/fire-crud/fire-database";
+import {Loading, LoadingController} from "ionic-angular";
 
 
 @Component({
@@ -11,8 +12,10 @@ import {FireDatabaseProvider} from "../../providers/fire-crud/fire-database";
 })
 export class ProductPage {
     items: Item[];
+    loader : Loading = null;
 
-    constructor(public db: FireDatabaseProvider) {
+    constructor(public db: FireDatabaseProvider,
+                public loadingCtrl: LoadingController) {
     }
 
     getItemsList() {
@@ -23,11 +26,20 @@ export class ProductPage {
             )
         ).subscribe(items => {
             this.items = items;
+            this.loader.dismiss();
         });
+    }
+
+    presentLoading() {
+        this.loader = this.loadingCtrl.create({
+            content: "Please wait..."
+        });
+        this.loader.present();
     }
 
 
     ionViewDidLoad() {
+        this.presentLoading();
         this.getItemsList();
     }
 
