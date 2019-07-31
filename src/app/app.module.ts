@@ -12,6 +12,8 @@ import {SignInPage} from "../pages/sign-in/sign-in";
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {CartPage} from "../pages/cart/cart";
 import {HeaderMenuComponent} from "../components/header-menu/header-menu";
+import {ProductItemComponent} from "../components/product-item/product-item";
+
 
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
@@ -20,6 +22,7 @@ import {FIREBASE_CONFIG} from "./firebase.credentials";
 import {AuthProvider} from '../providers/auth/auth';
 import {NgxErrorsModule} from "@ultimate/ngxerrors";
 import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
+import {ItemDetailsPage} from "../pages/item-details/item-details";
 
 @NgModule({
     declarations: [
@@ -30,6 +33,8 @@ import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
         SignInPage,
         SignUpPage,
         TabsPage,
+        ItemDetailsPage,
+        ProductItemComponent,
         HeaderMenuComponent
     ],
     imports: [
@@ -49,6 +54,8 @@ import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
         SignInPage,
         SignUpPage,
         TabsPage,
+        ItemDetailsPage,
+        ProductItemComponent,
         HeaderMenuComponent
     ],
     providers: [

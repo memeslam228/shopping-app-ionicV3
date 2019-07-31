@@ -13,24 +13,8 @@
 
 <ion-content padding>
     <ion-grid>
-        <ion-card *ngFor="let item of items">
-            <ion-row>
-                <ion-col col-12>
-                    <ion-row>
-                        <ion-col col-4>
-                            <img [src]="item.photoUrl" alt="ItemPicture">
-                        </ion-col>
-                        <ion-col col-8>
-                            <ion-title padding-top>
-                                {{ item.name }}
-                            </ion-title>
-                            <p padding-top padding-left>
-                                Price: {{ item.price }}
-                            </p>
-                        </ion-col>
-                    </ion-row>
-                </ion-col>
-            </ion-row>
-        </ion-card>
+        <div *ngFor="let item of items">
+            <product-item [item]='item'></product-item>
+        </div>
     </ion-grid>
 </ion-content>
