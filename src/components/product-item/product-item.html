@@ -1,0 +1,19 @@
+<ion-card *ngIf="item" (click)="openPage();">
+    <ion-row>
+        <ion-col col-12>
+            <ion-row>
+                <ion-col col-4>
+                    <img [src]="item.photoUrl" alt="ItemPicture">
+                </ion-col>
+                <ion-col col-8>
+                    <h3 padding-top padding-left>
+                        <b>{{ item.name }}</b>
+                    </h3>
+                    <p padding-top padding-left>
+                        Price: {{ item.price }}
+                    </p>
+                </ion-col>
+            </ion-row>
+        </ion-col>
+    </ion-row>
+</ion-card>
