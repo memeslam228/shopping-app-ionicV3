@@ -25,6 +25,7 @@ import {NgxErrorsModule} from "@ultimate/ngxerrors";
 import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
 import {ItemDetailsPage} from "../pages/product-details/item-details";
 import {FavouriteProvider} from '../providers/favourite/favourite';
+import { CartProvider } from '../providers/cart/cart';
 
 @NgModule({
     declarations: [
@@ -69,7 +70,8 @@ import {FavouriteProvider} from '../providers/favourite/favourite';
         AuthProvider,
         AngularFireAuth,
         FireDatabaseProvider,
-        FavouriteProvider
+        FavouriteProvider,
+    CartProvider
     ]
 })
 export class AppModule {
