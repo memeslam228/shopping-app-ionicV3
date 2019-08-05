@@ -15,14 +15,25 @@ export class FavouritePage {
         let smth = favourite.getItems();
         if (smth[0] != null) {
             this.items = favourite.getItems();
-        }
+        } else this.items = null;
+    }
+
+    clearAllFavourite() {
+        this.favourite.clearAllFavourite();
+        this.items = null;
+    }
+
+    isItems(): boolean {
+        if(this.items) {
+            return this.items[0] != null;
+        } else return false;
     }
 
     ionViewWillEnter() {
         let smth = this.favourite.getItems();
         if (smth[0] != null) {
             this.items = this.favourite.getItems();
-        }
+        } else this.items = null;
     }
 
 

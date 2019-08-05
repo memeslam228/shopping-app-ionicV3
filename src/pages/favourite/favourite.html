@@ -12,9 +12,12 @@
 </ion-header>
 
 <ion-content padding>
-    <div *ngIf="items; else noItems">
+     <button *ngIf="isItems()" ion-button color="light" block (click)="clearAllFavourite()">
+        <ion-icon name="trash"></ion-icon>   Clear all favourite
+    </button>
+    <div *ngIf="isItems(); else noItems">
         <div *ngFor="let item of items">
-            <p padding-top>{{ item.name }}</p>
+            <favourite-item [item]='item'></favourite-item>
         </div>
     </div>
     <ng-template #noItems>

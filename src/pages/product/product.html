@@ -12,9 +12,7 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-grid>
-        <div *ngFor="let item of items">
-            <product-item [item]='item'></product-item>
-        </div>
-    </ion-grid>
+    <div *ngFor="let item of items">
+        <product-item [item]='item'></product-item>
+    </div>
 </ion-content>

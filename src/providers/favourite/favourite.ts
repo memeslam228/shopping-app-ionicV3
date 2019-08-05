@@ -8,7 +8,6 @@ import {Item} from "../fire-crud/item";
 export class FavouriteProvider {
     itemsCount = 0;
     items: Item[] = [null];
-    bool: boolean;
 
     constructor(private toastCtrl: ToastController) {
         this.updateItems();
@@ -19,8 +18,15 @@ export class FavouriteProvider {
         return this.items;
     }
 
+    clearAllFavourite() {
+        this.items = [null];
+        localStorage.setItem('favourite-items', JSON.stringify(this.items));
+        this.countFavourite();
+        this.toastAllDeleted();
+    }
+
     addToFavourite(item: Item) {
-        this.bool = false;
+        let bool = false;
         if (this.items[0] == null) {
             this.items[0] = item;
             this.toastSuccess();
@@ -28,10 +34,10 @@ export class FavouriteProvider {
             // tslint:disable-next-line:prefer-for-of
             for (let i = 0; i < this.items.length; i++) {
                 if (this.items[i].name === item.name) {
-                    this.bool = true;
+                    bool = true;
                 }
             }
-            if (this.bool) {
+            if (bool) {
                 this.toastProblem();
             } else {
                 this.items.push(item);
@@ -68,13 +74,17 @@ export class FavouriteProvider {
     countFavourite() {
         const array = JSON.parse(localStorage.getItem('favourite-items'));
         if (array != null) {
-            this.itemsCount = array.length;
+            if (array[0] == null) {
+                this.itemsCount = 0;
+            } else {
+                this.itemsCount = array.length;
+            }
         }
     }
 
     private toastSuccess() {
         const toast = this.toastCtrl.create({
-            message: 'Item was added to favourite',
+            message: 'Item is added to favourite',
             duration: 1500,
             position: 'top',
             cssClass: 'toast-success',
@@ -98,7 +108,7 @@ export class FavouriteProvider {
 
     private toastDeleted() {
         const toast = this.toastCtrl.create({
-            message: 'This item was successfully deleted',
+            message: 'This item is successfully deleted',
             duration: 1500,
             position: 'top',
             cssClass: 'toast-info',
@@ -108,4 +118,15 @@ export class FavouriteProvider {
         toast.present();
     }
 
+    private toastAllDeleted() {
+        const toast = this.toastCtrl.create({
+            message: 'All items are successfully deleted',
+            duration: 1500,
+            position: 'top',
+            cssClass: 'toast-info',
+            showCloseButton: true,
+            closeButtonText: 'Ok'
+        });
+        toast.present();
+    }
 }
