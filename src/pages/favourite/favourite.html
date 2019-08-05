@@ -12,7 +12,16 @@
 </ion-header>
 
 <ion-content padding>
-    <div *ngFor="let item of items">
-        <p padding-top>{{ item.name }}</p>
+    <div *ngIf="items; else noItems">
+        <div *ngFor="let item of items">
+            <p padding-top>{{ item.name }}</p>
+        </div>
     </div>
+    <ng-template #noItems>
+        <div class="block-center opacity">
+            <div>
+                <h3>There is no one item</h3>
+            </div>
+        </div>
+    </ng-template>
 </ion-content>

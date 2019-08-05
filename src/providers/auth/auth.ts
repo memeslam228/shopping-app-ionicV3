@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/auth";
 import * as firebase from 'firebase/app';
+import {FavouriteProvider} from "../favourite/favourite";
 
 @Injectable()
 export class AuthProvider {
@@ -8,7 +9,7 @@ export class AuthProvider {
     private user: firebase.User;
     username: string = null;
 
-    constructor(public afAuth: AngularFireAuth) {
+    constructor(public afAuth: AngularFireAuth, private fav: FavouriteProvider) {
         afAuth.authState.subscribe(user => {
             if (user) {
                 this.user = user;
@@ -25,6 +26,7 @@ export class AuthProvider {
             credentials.password).then(() => {
             localStorage.setItem('user', JSON.stringify(this.afAuth.auth.currentUser));
             this.setName();
+            this.fav.countFavourite();
         });
     }
 
@@ -32,6 +34,7 @@ export class AuthProvider {
         return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password).then(() => {
             localStorage.setItem('user', JSON.stringify(this.afAuth.auth.currentUser));
             this.setName();
+            this.fav.countFavourite();
         });
     }
 

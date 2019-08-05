@@ -12,11 +12,17 @@ export class FavouritePage {
     items: Item[];
 
     constructor(private favourite: FavouriteProvider) {
-        this.items = favourite.getItems();
+        let smth = favourite.getItems();
+        if (smth[0] != null) {
+            this.items = favourite.getItems();
+        }
     }
 
-    ionViewDidLoad() {
-        this.items = this.favourite.getItems();
+    ionViewWillEnter() {
+        let smth = this.favourite.getItems();
+        if (smth[0] != null) {
+            this.items = this.favourite.getItems();
+        }
     }
 
 

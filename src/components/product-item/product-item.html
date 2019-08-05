@@ -1,17 +1,24 @@
-<ion-card *ngIf="item" (click)="openPage();">
+<ion-card *ngIf="item">
     <ion-row>
         <ion-col col-12>
             <ion-row>
-                <ion-col col-4>
+                <ion-col col-4 (click)="openPage();">
                     <img [src]="item.photoUrl" alt="ItemPicture">
                 </ion-col>
-                <ion-col col-8>
+                <ion-col col-6 (click)="openPage();">
                     <h3 padding-top padding-left>
                         <b>{{ item.name }}</b>
                     </h3>
-                    <p padding-top padding-left>
-                        Price: {{ item.price }}
-                    </p>
+                    <div class="float-bot">
+                        <p padding-left>
+                            Price: {{ item.price }}
+                        </p>
+                    </div>
+                </ion-col>
+                <ion-col col-2 (click)="presentActionSheet()">
+                    <button class="block-center" ion-button icon-only clear color="dark">
+                        <ion-icon name="more"></ion-icon>
+                    </button>
                 </ion-col>
             </ion-row>
         </ion-col>

@@ -59,6 +59,9 @@ export class FavouriteProvider {
     updateItems() {
         if (JSON.parse(localStorage.getItem('favourite-items'))) {
             this.items = JSON.parse(localStorage.getItem('favourite-items'));
+        } else {
+            this.items = [null];
+            this.itemsCount = 0;
         }
     }
 

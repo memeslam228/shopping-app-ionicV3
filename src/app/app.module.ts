@@ -13,6 +13,7 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
 import {CartPage} from "../pages/cart/cart";
 import {HeaderMenuComponent} from "../components/header-menu/header-menu";
 import {ProductItemComponent} from "../components/product-item/product-item";
+import {FavouriteItemComponent} from "../components/favourite-item/favourite-item";
 
 
 import {AngularFireModule} from "@angular/fire";
@@ -22,7 +23,7 @@ import {FIREBASE_CONFIG} from "./firebase.credentials";
 import {AuthProvider} from '../providers/auth/auth';
 import {NgxErrorsModule} from "@ultimate/ngxerrors";
 import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
-import {ItemDetailsPage} from "../pages/item-details/item-details";
+import {ItemDetailsPage} from "../pages/product-details/item-details";
 import {FavouriteProvider} from '../providers/favourite/favourite';
 
 @NgModule({
@@ -36,6 +37,7 @@ import {FavouriteProvider} from '../providers/favourite/favourite';
         TabsPage,
         ItemDetailsPage,
         ProductItemComponent,
+        FavouriteItemComponent,
         HeaderMenuComponent
     ],
     imports: [
@@ -57,6 +59,7 @@ import {FavouriteProvider} from '../providers/favourite/favourite';
         TabsPage,
         ItemDetailsPage,
         ProductItemComponent,
+        FavouriteItemComponent,
         HeaderMenuComponent
     ],
     providers: [

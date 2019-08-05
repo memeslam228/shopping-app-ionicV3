@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {ProductPage} from "../product/product";
 import {FavouritePage} from "../favourite/favourite";
 import {CartPage} from "../cart/cart";
+import {FavouriteProvider} from "../../providers/favourite/favourite";
 
 
 @Component({
@@ -13,7 +14,7 @@ export class TabsPage {
   tab2Root = FavouritePage;
   tab3Root = CartPage;
 
-  constructor() {
+  constructor(private favourite: FavouriteProvider) {
 
   }
 }
