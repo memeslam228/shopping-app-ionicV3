@@ -22,7 +22,7 @@ export class ItemDetailsPage {
 
     alertConstructor() {
         this.alert = this.alertCtrl.create();
-        this.alert.setTitle('Lightsaber color');
+        this.alert.setTitle('Item actions');
 
         this.alert.addInput({
             type: 'radio',

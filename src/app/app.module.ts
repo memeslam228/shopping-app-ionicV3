@@ -27,6 +27,7 @@ import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
 import {CartProvider} from '../providers/cart/cart';
 import {ToastProvider} from '../providers/toast/toast';
 import {CartItemComponent} from "../components/cart-item/cart-item";
+import {SortPipe} from "../pipes/sort/sort";
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import {CartItemComponent} from "../components/cart-item/cart-item";
         ProductItemComponent,
         FavouriteItemComponent,
         CartItemComponent,
-        HeaderMenuComponent
+        HeaderMenuComponent,
+        SortPipe
     ],
     imports: [
         BrowserModule,
