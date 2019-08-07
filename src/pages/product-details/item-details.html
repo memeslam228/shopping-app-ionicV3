@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ item.name }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <img [src]="item.photoUrl" alt="Item Picture">
+        <ion-card-content>
+            <ion-card-title>
+                {{ item.name }}
+            </ion-card-title>
+            <p>
+                {{ item.description }}
+            </p>
+            <p padding-top>
+                <b>
+                    Price: {{ item.price }}
+                </b>
+            </p>
+            <ion-buttons padding-top>
+                <hr>
+                <button color="dark" ion-button clear (click)="addToFavourite()">
+                    Like   
+                    <ion-icon name="star"></ion-icon>
+                </button>
+                <button color="dark" ion-button float-end clear (click)="addToCart()">
+                    Add to cart   
+                    <ion-icon name="cart"></ion-icon>
+                </button>
+            </ion-buttons>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

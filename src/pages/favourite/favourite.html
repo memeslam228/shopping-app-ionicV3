@@ -1,15 +1,30 @@
-
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Favourite</ion-title>
-      <ion-buttons end>
-          <button ion-button icon-only (click)="presentPopover($event)">
-              <ion-icon name="person"></ion-icon>
-          </button>
-      </ion-buttons>
-  </ion-toolbar>
+    <ion-navbar>
+        <ion-title>
+            Favourite
+        </ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only menuToggle>
+                <ion-icon name='person'></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+     <button *ngIf="isItems()" ion-button color="light" block (click)="clearAllFavourite()">
+        <ion-icon name="trash"></ion-icon>   Clear all favourite
+    </button>
+    <div *ngIf="isItems(); else noItems">
+        <div *ngFor="let item of items">
+            <favourite-item [item]='item'></favourite-item>
+        </div>
+    </div>
+    <ng-template #noItems>
+        <div class="block-center opacity">
+            <div>
+                <h3>There is no one item</h3>
+            </div>
+        </div>
+    </ng-template>
 </ion-content>

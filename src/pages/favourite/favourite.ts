@@ -1,28 +1,40 @@
 import {Component} from '@angular/core';
-import {PopoverController} from 'ionic-angular';
-import {PopoverUserComponent} from "../../components/popover-user/popover-user";
 
-/**
- * Generated class for the FavouritePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {FavouriteProvider} from "../../providers/favourite/favourite";
+import {Item} from "../../providers/fire-crud/item";
 
 @Component({
     selector: 'page-favourite',
     templateUrl: 'favourite.html',
 })
+
 export class FavouritePage {
+    items: Item[];
 
-    constructor(public popover: PopoverController) {
+    constructor(private favourite: FavouriteProvider) {
+        let smth = favourite.getItems();
+        if (smth[0] != null) {
+            this.items = favourite.getItems();
+        } else this.items = null;
     }
 
-    presentPopover(event) {
-        const popover = this.popover.create(PopoverUserComponent);
-        popover.present({
-            ev: event
-        });
+    clearAllFavourite() {
+        this.favourite.clearAllFavourite();
+        this.items = null;
     }
+
+    isItems(): boolean {
+        if(this.items) {
+            return this.items[0] != null;
+        } else return false;
+    }
+
+    ionViewWillEnter() {
+        let smth = this.favourite.getItems();
+        if (smth[0] != null) {
+            this.items = this.favourite.getItems();
+        } else this.items = null;
+    }
+
 
 }
