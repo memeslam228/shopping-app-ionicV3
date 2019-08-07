@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/auth";
 import * as firebase from 'firebase/app';
 import {FavouriteProvider} from "../favourite/favourite";
+import {CartProvider} from "../cart/cart";
 
 @Injectable()
 export class AuthProvider {
@@ -9,7 +10,9 @@ export class AuthProvider {
     private user: firebase.User;
     username: string = null;
 
-    constructor(public afAuth: AngularFireAuth, private fav: FavouriteProvider) {
+    constructor(public afAuth: AngularFireAuth,
+                private fav: FavouriteProvider,
+                private cart: CartProvider) {
         afAuth.authState.subscribe(user => {
             if (user) {
                 this.user = user;
@@ -21,12 +24,21 @@ export class AuthProvider {
         });
     }
 
+    getUid() {
+        this.user = JSON.parse(localStorage.getItem('user'));
+        if (this.user != null) {
+            return this.user.uid;
+        }
+    }
+
     signInWithEmail(credentials) {
         return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
             credentials.password).then(() => {
             localStorage.setItem('user', JSON.stringify(this.afAuth.auth.currentUser));
             this.setName();
             this.fav.countFavourite();
+            this.cart.setPath(this.getUid());
+            this.cart.updateId();
         });
     }
 
@@ -35,11 +47,15 @@ export class AuthProvider {
             localStorage.setItem('user', JSON.stringify(this.afAuth.auth.currentUser));
             this.setName();
             this.fav.countFavourite();
+            this.cart.setPath(this.getUid());
+            this.cart.updateId();
         });
     }
 
     logOut(): Promise<void> {
         localStorage.setItem('user', null);
+        this.cart.itemsCount = 0;
+        this.cart.items = [null];
         return this.afAuth.auth.signOut();
     }
 

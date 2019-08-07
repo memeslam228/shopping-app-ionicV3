@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {map} from "rxjs/operators";
-// @ts-ignore
+
 import {Item} from "../../providers/fire-crud/item";
 import {FireDatabaseProvider} from "../../providers/fire-crud/fire-database";
 import {Loading, LoadingController} from "ionic-angular";

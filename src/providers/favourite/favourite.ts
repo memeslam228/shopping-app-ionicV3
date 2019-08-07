@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {ToastController} from "ionic-angular";
 
 import {Item} from "../fire-crud/item";
+import {ToastProvider} from "../toast/toast";
 
 @Injectable()
 
@@ -9,7 +9,7 @@ export class FavouriteProvider {
     itemsCount = 0;
     items: Item[] = [null];
 
-    constructor(private toastCtrl: ToastController) {
+    constructor(private toast: ToastProvider) {
         this.updateItems();
         this.countFavourite();
     }
@@ -22,14 +22,14 @@ export class FavouriteProvider {
         this.items = [null];
         localStorage.setItem('favourite-items', JSON.stringify(this.items));
         this.countFavourite();
-        this.toastAllDeleted();
+        this.toast.toastAllDeleted();
     }
 
     addToFavourite(item: Item) {
         let bool = false;
         if (this.items[0] == null) {
             this.items[0] = item;
-            this.toastSuccess();
+            this.toast.toastSuccess('fav');
         } else {
             // tslint:disable-next-line:prefer-for-of
             for (let i = 0; i < this.items.length; i++) {
@@ -38,10 +38,10 @@ export class FavouriteProvider {
                 }
             }
             if (bool) {
-                this.toastProblem();
+                this.toast.toastProblem();
             } else {
                 this.items.push(item);
-                this.toastSuccess();
+                this.toast.toastSuccess('fav');
             }
         }
         localStorage.setItem('favourite-items', JSON.stringify(this.items));
@@ -52,7 +52,7 @@ export class FavouriteProvider {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].name === item.name) {
                 this.items.splice(i, 1);
-                this.toastDeleted();
+                this.toast.toastDeleted();
             }
         }
         if (!this.items[0]) {
@@ -82,51 +82,5 @@ export class FavouriteProvider {
         }
     }
 
-    private toastSuccess() {
-        const toast = this.toastCtrl.create({
-            message: 'Item is added to favourite',
-            duration: 1500,
-            position: 'top',
-            cssClass: 'toast-success',
-            showCloseButton: true,
-            closeButtonText: 'Ok'
-        });
-        toast.present();
-    }
 
-    private toastProblem() {
-        const toast = this.toastCtrl.create({
-            message: 'This item was added before',
-            duration: 1500,
-            position: 'top',
-            cssClass: 'toast-alert',
-            showCloseButton: true,
-            closeButtonText: 'Ok'
-        });
-        toast.present();
-    }
-
-    private toastDeleted() {
-        const toast = this.toastCtrl.create({
-            message: 'This item is successfully deleted',
-            duration: 1500,
-            position: 'top',
-            cssClass: 'toast-info',
-            showCloseButton: true,
-            closeButtonText: 'Ok'
-        });
-        toast.present();
-    }
-
-    private toastAllDeleted() {
-        const toast = this.toastCtrl.create({
-            message: 'All items are successfully deleted',
-            duration: 1500,
-            position: 'top',
-            cssClass: 'toast-info',
-            showCloseButton: true,
-            closeButtonText: 'Ok'
-        });
-        toast.present();
-    }
 }

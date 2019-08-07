@@ -14,7 +14,7 @@ import {CartPage} from "../pages/cart/cart";
 import {HeaderMenuComponent} from "../components/header-menu/header-menu";
 import {ProductItemComponent} from "../components/product-item/product-item";
 import {FavouriteItemComponent} from "../components/favourite-item/favourite-item";
-
+import {ItemDetailsPage} from "../pages/product-details/item-details";
 
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
@@ -22,10 +22,11 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {FIREBASE_CONFIG} from "./firebase.credentials";
 import {AuthProvider} from '../providers/auth/auth';
 import {NgxErrorsModule} from "@ultimate/ngxerrors";
-import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
-import {ItemDetailsPage} from "../pages/product-details/item-details";
 import {FavouriteProvider} from '../providers/favourite/favourite';
-import { CartProvider } from '../providers/cart/cart';
+import {FireDatabaseProvider} from '../providers/fire-crud/fire-database';
+import {CartProvider} from '../providers/cart/cart';
+import {ToastProvider} from '../providers/toast/toast';
+import {CartItemComponent} from "../components/cart-item/cart-item";
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { CartProvider } from '../providers/cart/cart';
         ItemDetailsPage,
         ProductItemComponent,
         FavouriteItemComponent,
+        CartItemComponent,
         HeaderMenuComponent
     ],
     imports: [
@@ -60,6 +62,7 @@ import { CartProvider } from '../providers/cart/cart';
         TabsPage,
         ItemDetailsPage,
         ProductItemComponent,
+        CartItemComponent,
         FavouriteItemComponent,
         HeaderMenuComponent
     ],
@@ -71,7 +74,8 @@ import { CartProvider } from '../providers/cart/cart';
         AngularFireAuth,
         FireDatabaseProvider,
         FavouriteProvider,
-    CartProvider
+        CartProvider,
+        ToastProvider
     ]
 })
 export class AppModule {

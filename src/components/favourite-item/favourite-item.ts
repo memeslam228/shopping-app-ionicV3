@@ -4,6 +4,7 @@ import {ActionSheetController, Alert, AlertController, NavController} from "ioni
 import {ItemDetailsPage} from "../../pages/product-details/item-details";
 import {Item} from "../../providers/fire-crud/item";
 import {FavouriteProvider} from "../../providers/favourite/favourite";
+import {CartProvider} from "../../providers/cart/cart";
 
 @Component({
     selector: 'favourite-item',
@@ -16,7 +17,8 @@ export class FavouriteItemComponent {
     constructor(private navCtrl: NavController,
                 private actionSheetCtrl: ActionSheetController,
                 private favourite: FavouriteProvider,
-                private alertCtrl: AlertController) {}
+                private alertCtrl: AlertController,
+                private cart: CartProvider) {}
 
     @Input()
     item: Item;
@@ -24,7 +26,7 @@ export class FavouriteItemComponent {
 
     alertConstructor() {
         this.alert = this.alertCtrl.create();
-        this.alert.setTitle('Lightsaber color');
+        this.alert.setTitle('Number of items');
 
         this.alert.addInput({
             type: 'radio',
@@ -47,6 +49,10 @@ export class FavouriteItemComponent {
         this.alert.addButton({
             text: 'OK',
             handler: data => {
+                let keyNumb: string = this.item.key + '|' + data ;
+                this.cart.addToCard(keyNumb);
+                const boolKey = this.item.key.split('|');
+                this.item.key = boolKey[0];
             }
         });
     }

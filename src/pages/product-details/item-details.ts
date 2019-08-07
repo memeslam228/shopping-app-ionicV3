@@ -3,6 +3,7 @@ import {Alert, AlertController, NavParams} from 'ionic-angular';
 
 import {Item} from "../../providers/fire-crud/item";
 import {FavouriteProvider} from "../../providers/favourite/favourite";
+import {CartProvider} from "../../providers/cart/cart";
 
 @Component({
     selector: 'page-item-details',
@@ -14,7 +15,8 @@ export class ItemDetailsPage {
 
     constructor(public navParams: NavParams,
                 private favourite: FavouriteProvider,
-                private alertCtrl: AlertController) {
+                private alertCtrl: AlertController,
+                private cart: CartProvider) {
         this.item = navParams.get('item');
     }
 
@@ -43,6 +45,10 @@ export class ItemDetailsPage {
         this.alert.addButton({
             text: 'OK',
             handler: data => {
+                let keyNumb: string = this.item.key + '|' + data ;
+                this.cart.addToCard(keyNumb);
+                const boolKey = this.item.key.split('|');
+                this.item.key = boolKey[0];
             }
         });
     }

@@ -6,6 +6,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 import {SignInPage} from "../pages/sign-in/sign-in";
 import {AuthProvider} from "../providers/auth/auth";
 import {TabsPage} from "../pages/tabs/tabs";
+import {CartProvider} from "../providers/cart/cart";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class MyApp {
                 statusBar: StatusBar,
                 splashScreen: SplashScreen,
                 private auth: AuthProvider,
-                public loadingCtrl: LoadingController) {
+                public loadingCtrl: LoadingController,
+                private cart: CartProvider) {
         platform.ready().then(() => {
             this.presentLoading();
             this.initializeApp();
@@ -43,6 +45,8 @@ export class MyApp {
                     if (user) {
                         this.rootPage = TabsPage;
                         this.loader.dismiss();
+                        this.cart.setPath(this.auth.getUid());
+                        this.cart.updateId();
                     } else {
                         this.rootPage = SignInPage;
                         this.loader.dismiss();

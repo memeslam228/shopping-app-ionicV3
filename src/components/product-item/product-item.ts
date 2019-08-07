@@ -1,9 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {ActionSheetController, Alert, AlertController, NavController} from "ionic-angular";
 
-import {Item} from "../../providers/fire-crud/item";
 import {ItemDetailsPage} from "../../pages/product-details/item-details";
+
+import {Item} from "../../providers/fire-crud/item";
 import {FavouriteProvider} from "../../providers/favourite/favourite";
+import {CartProvider} from "../../providers/cart/cart";
 
 
 @Component({
@@ -15,7 +17,8 @@ export class ProductItemComponent {
     constructor(private navCtrl: NavController,
                 private actionSheetCtrl: ActionSheetController,
                 private favourite: FavouriteProvider,
-                private alertCtrl: AlertController) {}
+                private alertCtrl: AlertController,
+                private cart: CartProvider) {}
 
     @Input()
     item: Item;
@@ -47,6 +50,10 @@ export class ProductItemComponent {
         this.alert.addButton({
             text: 'OK',
             handler: data => {
+                let keyNumb: string = this.item.key + '|' + data ;
+                this.cart.addToCard(keyNumb);
+                const boolKey = this.item.key.split('|');
+                this.item.key = boolKey[0];
             }
         });
     }

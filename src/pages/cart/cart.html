@@ -12,5 +12,20 @@
 </ion-header>
 
 <ion-content padding>
-
+    <button *ngIf="isItems()" ion-button color="light" block (click)="clearAllCart()">
+        <ion-icon name="trash"></ion-icon>
+           Clear all cart
+    </button>
+    <div *ngIf="isItems(); else noItems">
+        <div *ngFor="let item of this.cart.items">
+            <cart-item [item]='item'></cart-item>
+        </div>
+    </div>
+    <ng-template #noItems>
+        <div class="block-center opacity">
+            <div>
+                <h3>There is no one item</h3>
+            </div>
+        </div>
+    </ng-template>
 </ion-content>
