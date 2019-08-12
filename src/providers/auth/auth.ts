@@ -66,8 +66,8 @@ export class AuthProvider {
 
     setName() {
         let email = this.getEmail();
-        let nameBoof = email.split('@');
-        this.username = nameBoof[0];
+        // let nameBoof = email.split('@');
+        // this.username = nameBoof[0];
     }
 
 }
