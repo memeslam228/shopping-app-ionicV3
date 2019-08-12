@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import {ProductPage} from "../product/product";
-import {FavouritePage} from "../favourite/favourite";
-import {CartPage} from "../cart/cart";
-import {FavouriteProvider} from "../../providers/favourite/favourite";
-import {CartProvider} from "../../providers/cart/cart";
+
+import {CartPage} from '../cart/cart';
+import {ProductPage} from '../product/product';
+import {FavouritePage} from '../favourite/favourite';
+
+import {CartProvider} from '../../providers/cart/cart';
+import {FavouriteProvider} from '../../providers/favourite/favourite';
 
 
 @Component({
@@ -15,5 +17,5 @@ export class TabsPage {
   tab2Root = FavouritePage;
   tab3Root = CartPage;
 
-  constructor(private favourite: FavouriteProvider, private cart: CartProvider) {}
+  constructor(public favourite: FavouriteProvider, public cart: CartProvider) {}
 }

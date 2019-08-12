@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {NavController} from "ionic-angular";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import {TabsPage} from "../tabs/tabs";
-import {AuthProvider} from "../../providers/auth/auth";
+import {NavController} from 'ionic-angular';
+
+import {TabsPage} from '../tabs/tabs';
+
+import {AuthProvider} from '../../providers/auth/auth';
 
 /**
  * Generated class for the SignUpPage page.
@@ -17,35 +19,35 @@ import {AuthProvider} from "../../providers/auth/auth";
     templateUrl: 'sign-up.html',
 })
 export class SignUpPage {
-    signupError: string;
-    form: FormGroup;
 
-    constructor(
-        fb: FormBuilder,
-        private navCtrl: NavController,
-        private auth: AuthProvider
-    ) {
-        this.form = fb.group({
-            email: ['', Validators.compose([Validators.required, Validators.email])],
-            password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
-        });
-    }
+  signupError: string;
+  form: FormGroup;
 
-    signup() {
-        let data = this.form.value;
-        let credentials = {
-            email: data.email,
-            password: data.password
-        };
-        this.auth.signUp(credentials).then(
-            () => {
-                this.navCtrl.setRoot(TabsPage);
-            },
-            error => this.signupError = error.message
-        );
-    }
+  constructor(
+    fb: FormBuilder,
+    private navCtrl: NavController,
+    private auth: AuthProvider
+  ) {
+    this.form = fb.group({
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+    });
+  }
 
-    ionViewDidLoad() {
-    }
+  signup() {
+    let data = this.form.value;
+    let credentials = {
+      email: data.email,
+      password: data.password
+    };
+    this.auth.signUp(credentials).then(
+      () => {
+        this.navCtrl.setRoot(TabsPage);
+      },
+      error => this.signupError = error.message
+    );
+  }
+
+  ionViewDidLoad() {}
 
 }

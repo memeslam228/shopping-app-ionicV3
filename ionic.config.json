@@ -1,5 +1,7 @@
 {
   "name": "Shopping-App",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
