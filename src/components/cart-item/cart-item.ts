@@ -2,8 +2,8 @@ import {Component, Input} from '@angular/core';
 import {ActionSheetController, NavController} from "ionic-angular";
 
 import {Item} from "../../providers/fire-crud/item";
-import {ItemDetailsPage} from "../../pages/product-details/item-details";
 import {CartProvider} from "../../providers/cart/cart";
+import {ProductDetailsCartPage} from "../../pages/product-details-cart/product-details-cart";
 
 @Component({
     selector: 'cart-item',
@@ -30,13 +30,13 @@ export class CartItemComponent {
                     handler: () => {
                         this.openPage();
                     }
-                },{
+                }, {
                     text: 'Delete this item',
                     icon: 'trash',
                     handler: () => {
                         this.cart.deleteItem(this.item.key);
                     }
-                },{
+                }, {
                     text: 'Close',
                     icon: 'close',
                     role: 'cancel',
@@ -49,7 +49,7 @@ export class CartItemComponent {
     }
 
     openPage() {
-        this.navCtrl.push(ItemDetailsPage, {
+        this.navCtrl.push(ProductDetailsCartPage, {
             item: this.item
         });
     }

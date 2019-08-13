@@ -1,34 +1,36 @@
 import {Component} from '@angular/core';
-import {ModalController, NavParams} from 'ionic-angular';
+import {ModalController, NavParams, ViewController} from 'ionic-angular';
 
 import {Item} from "../../providers/fire-crud/item";
 import {FavouriteProvider} from "../../providers/favourite/favourite";
 import {AddToCartComponent} from "../../components/add-to-cart/add-to-cart";
 
 @Component({
-    selector: 'page-item-details',
-    templateUrl: 'item-details.html',
+    selector: 'page-product-details-favourite',
+    templateUrl: 'product-details-favourite.html',
 })
-export class ItemDetailsPage {
+
+export class ProductDetailsFavouritePage {
     item: Item;
 
     constructor(public navParams: NavParams,
                 private favourite: FavouriteProvider,
-                public modalCtrl: ModalController) {
+                public modalCtrl: ModalController,
+                public viewCtrl: ViewController) {
         this.item = navParams.get('item');
     }
 
+    deleteItem() {
+        this.favourite.deleteFromFavourite(this.item);
+        this.viewCtrl.dismiss();
+    }
+
     private presentProfileModal() {
-        let modal = this.modalCtrl.create(AddToCartComponent, { ItemKey: this.item.key });
+        let modal = this.modalCtrl.create(AddToCartComponent, {ItemKey: this.item.key});
         modal.present();
     }
 
     addToCart() {
         this.presentProfileModal();
     }
-
-    addToFavourite() {
-        this.favourite.addToFavourite(this.item);
-    }
-
 }

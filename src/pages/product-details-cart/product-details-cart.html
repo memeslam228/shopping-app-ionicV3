@@ -21,13 +21,9 @@
             </p>
             <ion-buttons padding-top>
                 <hr>
-                <button color="dark" ion-button outline (click)="addToFavourite()">
-                    Like   
-                    <ion-icon name="star"></ion-icon>
-                </button>
-                <button color="dark" ion-button float-end outline (click)="addToCart()">
-                    Add to cart   
-                    <ion-icon name="cart"></ion-icon>
+                <button color="danger" ion-button block outline (click)="deleteItem()">
+                    Delete from cart   
+                    <ion-icon name="trash"></ion-icon>
                 </button>
             </ion-buttons>
         </ion-card-content>

@@ -14,8 +14,10 @@ import {CartPage} from "../pages/cart/cart";
 import {HeaderMenuComponent} from "../components/header-menu/header-menu";
 import {ProductItemComponent} from "../components/product-item/product-item";
 import {FavouriteItemComponent} from "../components/favourite-item/favourite-item";
-import {ItemDetailsPage} from "../pages/product-details/item-details";
+import {ProductDetailsCartPage} from "../pages/product-details-cart/product-details-cart";
+import {ProductDetailsFavouritePage} from "../pages/product-details-favourite/product-details-favourite";
 
+import {ItemDetailsPage} from "../pages/product-details/item-details";
 import {AngularFireModule} from "@angular/fire";
 import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
@@ -28,6 +30,7 @@ import {CartProvider} from '../providers/cart/cart';
 import {ToastProvider} from '../providers/toast/toast';
 import {CartItemComponent} from "../components/cart-item/cart-item";
 import {SortPipe} from "../pipes/sort/sort";
+import {AddToCartComponent} from "../components/add-to-cart/add-to-cart";
 
 @NgModule({
     declarations: [
@@ -39,7 +42,10 @@ import {SortPipe} from "../pipes/sort/sort";
         SignUpPage,
         TabsPage,
         ItemDetailsPage,
+        ProductDetailsCartPage,
+        ProductDetailsFavouritePage,
         ProductItemComponent,
+        AddToCartComponent,
         FavouriteItemComponent,
         CartItemComponent,
         HeaderMenuComponent,
@@ -63,8 +69,11 @@ import {SortPipe} from "../pipes/sort/sort";
         SignUpPage,
         TabsPage,
         ItemDetailsPage,
+        ProductDetailsCartPage,
+        ProductDetailsFavouritePage,
         ProductItemComponent,
         CartItemComponent,
+        AddToCartComponent,
         FavouriteItemComponent,
         HeaderMenuComponent
     ],
