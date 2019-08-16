@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/database";
-// @ts-ignore
+
 import {Item} from './item';
 
 @Injectable()

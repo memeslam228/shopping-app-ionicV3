@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NavController} from "ionic-angular";
 
 import {TabsPage} from "../tabs/tabs";
-import {AuthProvider} from "../../providers/auth/auth";
 import {SignUpPage} from "../sign-up/sign-up";
+
+import {AuthProvider} from "../../providers/auth/auth";
 
 
 @Component({

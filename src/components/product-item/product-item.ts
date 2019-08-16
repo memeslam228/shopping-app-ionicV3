@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 
-import {ItemDetailsPage} from "../../pages/product-details/item-details";
-
-import {Item} from "../../providers/fire-crud/item";
-import {FavouriteProvider} from "../../providers/favourite/favourite";
+import {ItemDetailsPage} from "../../pages/product-details/item-details"
 import {AddToCartComponent} from "../add-to-cart/add-to-cart";
+
+import {FavouriteProvider} from "../../providers/favourite/favourite";
+import {Item} from "../../providers/fire-crud/item";
 
 
 @Component({

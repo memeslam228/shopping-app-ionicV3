@@ -1,10 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 
-import {Item} from "../../providers/fire-crud/item";
-import {FavouriteProvider} from "../../providers/favourite/favourite";
 import {ProductDetailsFavouritePage} from "../../pages/product-details-favourite/product-details-favourite";
 import {AddToCartComponent} from "../add-to-cart/add-to-cart";
+
+import {Item} from "../../providers/fire-crud/item";
+import {FavouriteProvider} from "../../providers/favourite/favourite";
 
 @Component({
     selector: 'favourite-item',

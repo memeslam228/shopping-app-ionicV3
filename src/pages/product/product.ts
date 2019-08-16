@@ -15,7 +15,6 @@ export class ProductPage {
     items: Item[];
     nonFilteredItems: Item[];
     loader: Loading = null;
-    searchQuery: string = '';
 
     constructor(public db: FireDatabaseProvider,
                 public loadingCtrl: LoadingController,

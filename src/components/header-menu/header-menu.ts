@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {AuthProvider} from "../../providers/auth/auth";
 import {App, MenuController} from "ionic-angular";
 
 import {SignInPage} from "../../pages/sign-in/sign-in";
+
+import {AuthProvider} from "../../providers/auth/auth";
 
 @Component({
     selector: 'header-menu',

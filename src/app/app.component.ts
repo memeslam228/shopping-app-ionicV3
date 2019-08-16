@@ -4,9 +4,10 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {SignInPage} from "../pages/sign-in/sign-in";
-import {AuthProvider} from "../providers/auth/auth";
 import {TabsPage} from "../pages/tabs/tabs";
+
 import {CartProvider} from "../providers/cart/cart";
+import {AuthProvider} from "../providers/auth/auth";
 
 
 @Component({

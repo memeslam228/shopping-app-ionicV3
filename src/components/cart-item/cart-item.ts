@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {ActionSheetController, NavController} from "ionic-angular";
 
+import {ProductDetailsCartPage} from "../../pages/product-details-cart/product-details-cart";
+
 import {Item} from "../../providers/fire-crud/item";
 import {CartProvider} from "../../providers/cart/cart";
-import {ProductDetailsCartPage} from "../../pages/product-details-cart/product-details-cart";
 
 @Component({
     selector: 'cart-item',

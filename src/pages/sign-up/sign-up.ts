@@ -1,18 +1,10 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
 import {NavController} from 'ionic-angular';
 
 import {TabsPage} from '../tabs/tabs';
 
 import {AuthProvider} from '../../providers/auth/auth';
-
-/**
- * Generated class for the SignUpPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
     selector: 'page-sign-up',

@@ -1,4 +1,5 @@
 import {Pipe} from '@angular/core';
+
 import {Item} from "../../providers/fire-crud/item";
 
 @Pipe({
@@ -47,10 +48,6 @@ export class SortPipe {
         return 0;
     }
 
-    private static normal(a, b) {
-        return 0;
-    }
-
     static subSelected(items: Item[], type: string) {
         if (type === 'fromEtoC') {
             return items.sort(SortPipe.sortStoB);
@@ -63,8 +60,6 @@ export class SortPipe {
         }
         if (type === 'Z-A') {
             return items.sort(SortPipe.sortZA);
-        }if (type === 'OK') {
-            return items.sort(SortPipe.normal);
         }
     }
 

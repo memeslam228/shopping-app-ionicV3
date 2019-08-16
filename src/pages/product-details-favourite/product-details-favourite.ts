@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {ModalController, NavParams, ViewController} from 'ionic-angular';
 
+import {AddToCartComponent} from "../../components/add-to-cart/add-to-cart";
+
 import {Item} from "../../providers/fire-crud/item";
 import {FavouriteProvider} from "../../providers/favourite/favourite";
-import {AddToCartComponent} from "../../components/add-to-cart/add-to-cart";
 
 @Component({
     selector: 'page-product-details-favourite',
