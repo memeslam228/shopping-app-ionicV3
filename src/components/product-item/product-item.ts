@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+
 import {ActionSheetController, ModalController, NavController} from "ionic-angular";
 
 import {ItemDetailsPage} from "../../pages/product-details/item-details"

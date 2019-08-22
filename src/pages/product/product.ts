@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
+
+import {ActionSheetController, Loading, LoadingController} from "ionic-angular";
+
 import {map} from "rxjs/operators";
 
 import {Item} from "../../providers/fire-crud/item";
 import {FireDatabaseProvider} from "../../providers/fire-crud/fire-database";
-import {ActionSheetController, Loading, LoadingController} from "ionic-angular";
-import {SortPipe} from "../../pipes/sort/sort";
+import {SortPipe} from "../../pipes/sort";
 
 
 @Component({

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+
 import {ModalController, NavParams} from 'ionic-angular';
 
 import {AddToCartComponent} from "../../components/add-to-cart/add-to-cart";

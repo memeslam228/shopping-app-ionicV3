@@ -1,6 +1,6 @@
 import {Pipe} from '@angular/core';
 
-import {Item} from "../../providers/fire-crud/item";
+import {Item} from "../providers/fire-crud/item";
 
 @Pipe({
     name: 'sort',

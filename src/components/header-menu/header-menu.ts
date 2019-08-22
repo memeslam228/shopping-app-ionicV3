@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+
 import {App, MenuController} from "ionic-angular";
 
 import {SignInPage} from "../../pages/sign-in/sign-in";
